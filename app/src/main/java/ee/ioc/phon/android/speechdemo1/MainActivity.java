@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
             @Override
             @TargetApi(21)
             public void onClick(View view) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     Intent intent = new Intent();
                     intent.setAction(Settings.ACTION_VOICE_INPUT_SETTINGS);
                     startActivity(intent);
