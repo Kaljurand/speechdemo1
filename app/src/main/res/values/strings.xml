@@ -1,0 +1,12 @@
+<resources>
+    <string name="key_uri" translatable="false">key_uri</string>
+    <string name="default_uri" translatable="false">ws://...</string>
+
+    <string name="app_name">Speechdemo1</string>
+    <string name="summary_uri">Recognition server URI</string>
+    <string name="title_uri">Server URI</string>
+
+    <string name="button_settings_app">General app settings (permissions, defaults, etc.)</string>
+    <string name="button_settings_service">Recognition service settings</string>
+    <string name="button_settings_voice_input">Voice input settings</string>
+</resources>

@@ -1,0 +1,63 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ee.ioc.phon.android.speechdemo1">
+
+    <!-- Permission RECORD_AUDIO. Used to record the speech input to be transcribed.-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true">
+        <!-- Launcher activity that allows the user to quickly access the settings. -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Settings activity. Linked from "Assist & voice input" settings,
+        but also from the MainActivity. -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Speech recognition service. Records audio and returns the transcription. -->
+        <service
+            android:name=".SpeechService"
+            android:icon="@drawable/ic_service"
+            android:label="@string/app_name"
+            android:permission="android.permission.RECORD_AUDIO">
+            <intent-filter>
+
+                <!-- The constant value is defined at RecognitionService.SERVICE_INTERFACE. -->
+                <action android:name="android.speech.RecognitionService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.speech"
+                android:resource="@xml/service" />
+        </service>
+
+        <!-- Broadcast receiver that declares the supported languages. -->
+        <receiver
+            android:name=".GetLanguageDetailsReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.speech.action.GET_LANGUAGE_DETAILS" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
